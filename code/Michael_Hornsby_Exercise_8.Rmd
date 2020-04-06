@@ -4,3 +4,47 @@ output: html_notebook
 ---
 
 Michael Hornsby Exercise Set 8
+
+libraries
+
+```{r include=FALSE}
+library(here)
+library(tidyverse)
+library(ggrepel)
+library(scales)
+```
+
+
+Number 1
+
+Create function
+
+```{r}
+my.function <- function(dataset, numeric, reverse) {
+  dataset <- hypothetical
+reverse <- reverse + 1
+numeric <- numeric + 1
+
+for (i in reverse) {
+  dataset[i] <- abs(dataset[i] - numeric)
+}
+
+dataset$total <- rowSums(dataset[,2:as.numeric(ncol(dataset))])
+
+print(dataset)
+}
+```
+
+
+
+Number 2
+
+read in the data and send to function
+
+```{r}
+hypothetical <- read_csv(here("data", "hypothetical.csv"))
+
+my.function(hypothetical, 6, c(2,3,8))
+```
+
+

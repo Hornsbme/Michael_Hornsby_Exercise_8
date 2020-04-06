@@ -1750,9 +1750,44 @@ summary {
 
 <!-- rnb-text-begin -->
 <p>Michael Hornsby Exercise Set 8</p>
+<p>libraries</p>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<p>Number 1</p>
+<p>Create function</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXkuZnVuY3Rpb24gPC0gZnVuY3Rpb24oZGF0YXNldCwgbnVtZXJpYywgcmV2ZXJzZSkge1xuICBkYXRhc2V0IDwtIGh5cG90aGV0aWNhbFxucmV2ZXJzZSA8LSByZXZlcnNlICsgMVxubnVtZXJpYyA8LSBudW1lcmljICsgMVxuXG5mb3IgKGkgaW4gcmV2ZXJzZSkge1xuICBkYXRhc2V0W2ldIDwtIGFicyhkYXRhc2V0W2ldIC0gbnVtZXJpYylcbn1cblxuZGF0YXNldCR0b3RhbCA8LSByb3dTdW1zKGRhdGFzZXRbLDI6YXMubnVtZXJpYyhuY29sKGRhdGFzZXQpKV0pXG5cbnByaW50KGRhdGFzZXQpXG59XG5gYGAifQ== -->
+<pre class="r"><code>my.function &lt;- function(dataset, numeric, reverse) {
+  dataset &lt;- hypothetical
+reverse &lt;- reverse + 1
+numeric &lt;- numeric + 1
+
+for (i in reverse) {
+  dataset[i] &lt;- abs(dataset[i] - numeric)
+}
+
+dataset$total &lt;- rowSums(dataset[,2:as.numeric(ncol(dataset))])
+
+print(dataset)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Number 2</p>
+<p>read in the data and send to function</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaHlwb3RoZXRpY2FsIDwtIHJlYWRfY3N2KGhlcmUoXCJkYXRhXCIsIFwiaHlwb3RoZXRpY2FsLmNzdlwiKSlcblxubXkuZnVuY3Rpb24oaHlwb3RoZXRpY2FsLCA2LCBjKDIsMyw4KSlcbmBgYCJ9 -->
+<pre class="r"><code>hypothetical &lt;- read_csv(here(&quot;data&quot;, &quot;hypothetical.csv&quot;))
+
+my.function(hypothetical, 6, c(2,3,8))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpNaWNoYWVsIEhvcm5zYnkgRXhlcmNpc2UgU2V0IDg=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpNaWNoYWVsIEhvcm5zYnkgRXhlcmNpc2UgU2V0IDgNCg0KbGlicmFyaWVzDQoNCmBgYHtyIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KGhlcmUpDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZ2dyZXBlbCkNCmxpYnJhcnkoc2NhbGVzKQ0KYGBgDQoNCg0KTnVtYmVyIDENCg0KQ3JlYXRlIGZ1bmN0aW9uDQoNCmBgYHtyfQ0KbXkuZnVuY3Rpb24gPC0gZnVuY3Rpb24oZGF0YXNldCwgbnVtZXJpYywgcmV2ZXJzZSkgew0KICBkYXRhc2V0IDwtIGh5cG90aGV0aWNhbA0KcmV2ZXJzZSA8LSByZXZlcnNlICsgMQ0KbnVtZXJpYyA8LSBudW1lcmljICsgMQ0KDQpmb3IgKGkgaW4gcmV2ZXJzZSkgew0KICBkYXRhc2V0W2ldIDwtIGFicyhkYXRhc2V0W2ldIC0gbnVtZXJpYykNCn0NCg0KZGF0YXNldCR0b3RhbCA8LSByb3dTdW1zKGRhdGFzZXRbLDI6YXMubnVtZXJpYyhuY29sKGRhdGFzZXQpKV0pDQoNCnByaW50KGRhdGFzZXQpDQp9DQpgYGANCg0KDQoNCk51bWJlciAyDQoNCnJlYWQgaW4gdGhlIGRhdGEgYW5kIHNlbmQgdG8gZnVuY3Rpb24NCg0KYGBge3J9DQpoeXBvdGhldGljYWwgPC0gcmVhZF9jc3YoaGVyZSgiZGF0YSIsICJoeXBvdGhldGljYWwuY3N2IikpDQoNCm15LmZ1bmN0aW9uKGh5cG90aGV0aWNhbCwgNiwgYygyLDMsOCkpDQpgYGANCg0KDQo=</div>
 
 
 
