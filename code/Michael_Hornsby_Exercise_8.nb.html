@@ -1757,19 +1757,21 @@ summary {
 <p>Create function</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXkuZnVuY3Rpb24gPC0gZnVuY3Rpb24oZGF0YXNldCwgbnVtZXJpYywgcmV2ZXJzZSkge1xuICBkYXRhc2V0IDwtIGh5cG90aGV0aWNhbFxucmV2ZXJzZSA8LSByZXZlcnNlICsgMVxubnVtZXJpYyA8LSBudW1lcmljICsgMVxuXG5mb3IgKGkgaW4gcmV2ZXJzZSkge1xuICBkYXRhc2V0W2ldIDwtIGFicyhkYXRhc2V0W2ldIC0gbnVtZXJpYylcbn1cblxuZGF0YXNldCR0b3RhbCA8LSByb3dTdW1zKGRhdGFzZXRbLDI6YXMubnVtZXJpYyhuY29sKGRhdGFzZXQpKV0pXG5cbnByaW50KGRhdGFzZXQpXG59XG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXkuZnVuY3Rpb24gPC0gZnVuY3Rpb24oZGF0YXNldCwgbnVtZXJpYywgcmV2ZXJzZSkge1xuXG5yZXZlcnNlIDwtIHJldmVyc2UgKyAxXG5udW1lcmljIDwtIG51bWVyaWMgKyAxXG5yZXZlcnNlX2RhdGFzZXQgPC0gZGF0YXNldFxuXG5mb3IgKGkgaW4gcmV2ZXJzZSkge1xuICByZXZlcnNlX2RhdGFzZXRbaV0gPC0gYWJzKHJldmVyc2VfZGF0YXNldFtpXSAtIG51bWVyaWMpXG59XG5cbmRhdGFzZXQkdG90YWwgPC0gcm93U3VtcyhyZXZlcnNlX2RhdGFzZXRbLDI6YXMubnVtZXJpYyhuY29sKHJldmVyc2VfZGF0YXNldCkpXSlcblxucHJpbnQoZGF0YXNldClcblxufVxuYGBgIn0= -->
 <pre class="r"><code>my.function &lt;- function(dataset, numeric, reverse) {
-  dataset &lt;- hypothetical
+
 reverse &lt;- reverse + 1
 numeric &lt;- numeric + 1
+reverse_dataset &lt;- dataset
 
 for (i in reverse) {
-  dataset[i] &lt;- abs(dataset[i] - numeric)
+  reverse_dataset[i] &lt;- abs(reverse_dataset[i] - numeric)
 }
 
-dataset$total &lt;- rowSums(dataset[,2:as.numeric(ncol(dataset))])
+dataset$total &lt;- rowSums(reverse_dataset[,2:as.numeric(ncol(reverse_dataset))])
 
 print(dataset)
+
 }</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -1785,9 +1787,44 @@ my.function(hypothetical, 6, c(2,3,8))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Number 3</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaHNiMiA8LSByZWFkX2V4Y2VsKGhlcmUoXCJkYXRhXCIsIFwiaHNiMi54bHN4XCIpKVxuXG5oc2IyJGdlbmRlciA8LSBmYWN0b3IoaHNiMiRmZW1hbGUsIGxhYmVscyA9IGMoXCJtYWxlXCIsIFwiZmVtYWxlXCIpKVxuXG5nZ3Bsb3QoZGF0YSA9IGhzYjIpICsgXG4gIGdlb21fcG9pbnQobWFwcGluZyA9IGFlcyh4ID0gbWF0aCwgeSA9IHNjaWVuY2UsIGNvbG9yID0gZ2VuZGVyKSlcbmBgYCJ9 -->
+<pre class="r"><code>hsb2 &lt;- read_excel(here(&quot;data&quot;, &quot;hsb2.xlsx&quot;))
+
+hsb2$gender &lt;- factor(hsb2$female, labels = c(&quot;male&quot;, &quot;female&quot;))
+
+ggplot(data = hsb2) + 
+  geom_point(mapping = aes(x = math, y = science, color = gender))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Number 4</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBoc2IyKSArIFxuICBnZW9tX3BvaW50KG1hcHBpbmcgPSBhZXMoeCA9IG1hdGgsIHkgPSBzY2llbmNlKSkgK1xuICBmYWNldF93cmFwKH5nZW5kZXIpXG5gYGAifQ== -->
+<pre class="r"><code>ggplot(data = hsb2) + 
+  geom_point(mapping = aes(x = math, y = science)) +
+  facet_wrap(~gender)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Number 5</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBoc2IyKSArIFxuICBnZW9tX3FxKGFlcyhzYW1wbGU9bWF0aCkpXG5cbiMgVGhpcyBpcyBhIHFxLXBsb3Qgb2YgdGhlIG1hdGggc2NvcmVzIGluIHRoZSBoc2IyIGRhdGFzZXQuICBUaGlzIHdpbGwgZ2l2ZVxuIyB1cyBhIHNlbnNlIG9mIHdoZXRoZXIgb3Igbm90IHdlIGhhdmUgYSBub3JtYWxseSBkaXN0cmlidXRlZCBtYXRoIHZhcmlhYmxlLlxuYGBgIn0= -->
+<pre class="r"><code>ggplot(data = hsb2) + 
+  geom_qq(aes(sample=math))
+
+# This is a qq-plot of the math scores in the hsb2 dataset.  This will give
+# us a sense of whether or not we have a normally distributed math variable.</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpNaWNoYWVsIEhvcm5zYnkgRXhlcmNpc2UgU2V0IDgNCg0KbGlicmFyaWVzDQoNCmBgYHtyIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KGhlcmUpDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZ2dyZXBlbCkNCmxpYnJhcnkoc2NhbGVzKQ0KYGBgDQoNCg0KTnVtYmVyIDENCg0KQ3JlYXRlIGZ1bmN0aW9uDQoNCmBgYHtyfQ0KbXkuZnVuY3Rpb24gPC0gZnVuY3Rpb24oZGF0YXNldCwgbnVtZXJpYywgcmV2ZXJzZSkgew0KICBkYXRhc2V0IDwtIGh5cG90aGV0aWNhbA0KcmV2ZXJzZSA8LSByZXZlcnNlICsgMQ0KbnVtZXJpYyA8LSBudW1lcmljICsgMQ0KDQpmb3IgKGkgaW4gcmV2ZXJzZSkgew0KICBkYXRhc2V0W2ldIDwtIGFicyhkYXRhc2V0W2ldIC0gbnVtZXJpYykNCn0NCg0KZGF0YXNldCR0b3RhbCA8LSByb3dTdW1zKGRhdGFzZXRbLDI6YXMubnVtZXJpYyhuY29sKGRhdGFzZXQpKV0pDQoNCnByaW50KGRhdGFzZXQpDQp9DQpgYGANCg0KDQoNCk51bWJlciAyDQoNCnJlYWQgaW4gdGhlIGRhdGEgYW5kIHNlbmQgdG8gZnVuY3Rpb24NCg0KYGBge3J9DQpoeXBvdGhldGljYWwgPC0gcmVhZF9jc3YoaGVyZSgiZGF0YSIsICJoeXBvdGhldGljYWwuY3N2IikpDQoNCm15LmZ1bmN0aW9uKGh5cG90aGV0aWNhbCwgNiwgYygyLDMsOCkpDQpgYGANCg0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpNaWNoYWVsIEhvcm5zYnkgRXhlcmNpc2UgU2V0IDgNCg0KbGlicmFyaWVzDQoNCmBgYHtyIGluY2x1ZGU9RkFMU0V9DQpsaWJyYXJ5KGhlcmUpDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoZ2dyZXBlbCkNCmxpYnJhcnkoc2NhbGVzKQ0KbGlicmFyeShyZWFkeGwpDQpgYGANCg0KDQpOdW1iZXIgMQ0KDQpDcmVhdGUgZnVuY3Rpb24NCg0KYGBge3J9DQpteS5mdW5jdGlvbiA8LSBmdW5jdGlvbihkYXRhc2V0LCBudW1lcmljLCByZXZlcnNlKSB7DQoNCnJldmVyc2UgPC0gcmV2ZXJzZSArIDENCm51bWVyaWMgPC0gbnVtZXJpYyArIDENCnJldmVyc2VfZGF0YXNldCA8LSBkYXRhc2V0DQoNCmZvciAoaSBpbiByZXZlcnNlKSB7DQogIHJldmVyc2VfZGF0YXNldFtpXSA8LSBhYnMocmV2ZXJzZV9kYXRhc2V0W2ldIC0gbnVtZXJpYykNCn0NCg0KZGF0YXNldCR0b3RhbCA8LSByb3dTdW1zKHJldmVyc2VfZGF0YXNldFssMjphcy5udW1lcmljKG5jb2wocmV2ZXJzZV9kYXRhc2V0KSldKQ0KDQpwcmludChkYXRhc2V0KQ0KDQp9DQpgYGANCg0KDQoNCk51bWJlciAyDQoNCnJlYWQgaW4gdGhlIGRhdGEgYW5kIHNlbmQgdG8gZnVuY3Rpb24NCg0KYGBge3J9DQpoeXBvdGhldGljYWwgPC0gcmVhZF9jc3YoaGVyZSgiZGF0YSIsICJoeXBvdGhldGljYWwuY3N2IikpDQoNCm15LmZ1bmN0aW9uKGh5cG90aGV0aWNhbCwgNiwgYygyLDMsOCkpDQpgYGANCg0KDQoNCk51bWJlciAzDQoNCmBgYHtyfQ0KaHNiMiA8LSByZWFkX2V4Y2VsKGhlcmUoImRhdGEiLCAiaHNiMi54bHN4IikpDQoNCmhzYjIkZ2VuZGVyIDwtIGZhY3Rvcihoc2IyJGZlbWFsZSwgbGFiZWxzID0gYygibWFsZSIsICJmZW1hbGUiKSkNCg0KZ2dwbG90KGRhdGEgPSBoc2IyKSArIA0KICBnZW9tX3BvaW50KG1hcHBpbmcgPSBhZXMoeCA9IG1hdGgsIHkgPSBzY2llbmNlLCBjb2xvciA9IGdlbmRlcikpDQpgYGANCg0KDQoNCk51bWJlciA0DQoNCmBgYHtyfQ0KZ2dwbG90KGRhdGEgPSBoc2IyKSArIA0KICBnZW9tX3BvaW50KG1hcHBpbmcgPSBhZXMoeCA9IG1hdGgsIHkgPSBzY2llbmNlKSkgKw0KICBmYWNldF93cmFwKH5nZW5kZXIpDQpgYGANCg0KDQpOdW1iZXIgNQ0KYGBge3J9DQpnZ3Bsb3QoZGF0YSA9IGhzYjIpICsgDQogIGdlb21fcXEoYWVzKHNhbXBsZT1tYXRoKSkNCg0KIyBUaGlzIGlzIGEgcXEtcGxvdCBvZiB0aGUgbWF0aCBzY29yZXMgaW4gdGhlIGhzYjIgZGF0YXNldC4gIFRoaXMgd2lsbCBnaXZlDQojIHVzIGEgc2Vuc2Ugb2Ygd2hldGhlciBvciBub3Qgd2UgaGF2ZSBhIG5vcm1hbGx5IGRpc3RyaWJ1dGVkIG1hdGggdmFyaWFibGUuDQpgYGANCg0K</div>
 
 
 
